@@ -20,4 +20,4 @@ jobs:
         run: |
           git remote add production ${{ secrets.REMOTE}}
           git checkout master
-          git push --force production master
+          git push production master --force --quiet
