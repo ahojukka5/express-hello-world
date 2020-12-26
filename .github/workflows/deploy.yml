@@ -1,0 +1,23 @@
+name: deploy
+
+on: push
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+          ref: 'master'
+      - name: Install deployment key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      - name: Deploy to server
+        run: |
+          git remote add production ${{ secrets.REMOTE}}
+          git checkout master
+          git push --force production master
