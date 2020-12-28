@@ -4,6 +4,7 @@
   "description": "A simple hello world app",
   "author": "Jukka Aho <ahojukka5@gmail.com>",
   "license": "MIT",
+  "git": "https://github.com/ahojukka5/express-hello-world.git",
   "dependencies": {
     "express": "^4.17.1"
   }
